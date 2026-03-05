@@ -32,7 +32,7 @@ async function selectCategory(categoriesId, btn) {
   console.log(categoriesId, btn);
   ShowLoading();
   const allbuttons = document.querySelectorAll(
-    "#categoriesContainer button, #treesContainer",
+    "#categoriesContainer button, #allTreesBtn",
   );
   allbuttons.forEach((btn) => {
     btn.classList.remove("btn-success");
@@ -55,7 +55,9 @@ allTreesBtn.addEventListener("click", () => {
   const allbuttons = document.querySelectorAll(
     "#categoriesContainer button, #allTreesBtn",
   );
+  console.log(allbuttons);
   allbuttons.forEach((btn) => {
+    console.log(btn);
     btn.classList.remove("btn-success");
     btn.classList.add("btn-outline");
   });
