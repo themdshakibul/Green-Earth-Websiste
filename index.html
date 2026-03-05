@@ -188,9 +188,9 @@
           <div
             class="col-span-3 card card-body card-border bg-base-100 shadow-xl space-y-5"
           >
-            <h2 class="text-xl font-medium">Categories</h2>
+            <h2 class="text-2xl font-bold text-center">Categories</h2>
             <!-- all tree btn -->
-            <div>
+            <div class="space-y-3 sticky top-8">
               <button
                 id="allTreesBtn"
                 class="btn btn-success w-full text-xl text-base-content mb-5"
@@ -229,9 +229,110 @@
           <div
             class="col-span-3 card card-body card-border bg-base-100 shadow-xl space-y-5"
           >
-            <h2 class="text-xl font-medium">Your Cart</h2>
+            <h2 class="text-xl font-medium">
+              Your Card
+              <div class="indicator">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+                <span class="badge badge-sm indicator-item">0</span>
+              </div>
+            </h2>
+
+            <!-- price -->
+            <div class="space-y-5">
+              <div class="card card-body bg-base-100 shadow-xl">
+                <div class="flex justify-between items-center">
+                  <div class="text-xl font-semibold">
+                    <h2>Name</h2>
+                    <p>$200 x 10</p>
+                  </div>
+                  <button class="btn btn-ghost">X</button>
+                </div>
+                <p class="font-semibold text-xl text-right">$500</p>
+              </div>
+
+              <!-- total amount -->
+              <div
+                class="py-5 bg-success/20 rounded-r-md p-5 flex items-center justify-between text-2xl font-semibold"
+              >
+                <span>Total</span>
+                <span>$00</span>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
+
+      <!-- modal -->
+      <section>
+        <dialog id="treeDetailsModal" class="modal">
+          <div class="modal-box">
+            <!-- text and close btn  -->
+            <div class="flex justify-between items-center mb-4">
+              <h2
+                class="flex text-2xl font-bold text-success"
+                id="modalTitle"
+              ></h2>
+              <button
+                class="btn btn-sm btn-circle btn-ghost"
+                onclick="document.getElementById('PlantModl').close()"
+              >
+                X
+              </button>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="gap-6">
+              <!-- img -->
+              <div class="overflow-hidden rounded-md mb-5">
+                <img
+                  src=""
+                  alt=""
+                  id="modalInage"
+                  class="w-full h-70 object-cover transition-transform duration-500 ease-in-out hover:scale-110"
+                />
+              </div>
+
+              <!-- Plan Details -->
+              <div class="">
+                <p class="text-xl text-base-content mb-2">
+                  <span class="font-bold">Categories:</span>
+                  <span
+                    id="modalCategory"
+                    class="badge badge-success rounded-full text-success-content"
+                  ></span>
+                </p>
+                <p class="text-xl text-base-content mb-2 line-clamp-3">
+                  <span id="modalDescription"></span>
+                </p>
+                <p class="text-xl text-base-content gap-2 mb-6">
+                  <span class="text-3xl font-bold text-success"
+                    >$<span id="modalPrice">0</span>
+                  </span>
+                </p>
+              </div>
+            </div>
+
+            <div class="modal-action">
+              <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button class="btn">Close</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
       </section>
     </main>
 

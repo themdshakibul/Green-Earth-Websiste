@@ -3,6 +3,14 @@ const treesContainer = document.getElementById("treesContainer");
 const loadingSpiner = document.getElementById("loadingSpiner");
 const allTreesBtn = document.getElementById("allTreesBtn");
 
+// modal
+const treeDetailsModal = document.getElementById("treeDetailsModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalInage = document.getElementById("modalInage");
+const modalCategory = document.getElementById("modalCategory");
+const modalDescription = document.getElementById("modalDescription");
+const modalPrice = document.getElementById("modalPrice");
+
 function ShowLoading() {
   loadingSpiner.classList.remove("hidden");
   loadingSpiner.classList.add("flex");
@@ -85,11 +93,12 @@ function displayTrees(trees) {
             src="${tree.image}"
             alt="${tree.name}"
             title="${tree.name}"
-            class="h-40 w-full object-cover"
+            onclick="openTreeModal(${tree.id})"
+            class="cursor-pointer h-40 w-full object-cover transition-transform duration-500 ease-in-out hover:scale-110"
           />
         </figure>
         <div class="card-body">
-          <h2 class="card-title">${tree.name}</h2>
+          <h2 class="card-title cursor-pointer" onclick="openTreeModal(${tree.id})">${tree.name}</h2>
           <p class="line-clamp-2">
             ${tree.description}
           </p>
@@ -100,13 +109,29 @@ function displayTrees(trees) {
           </div>
           <div class="card-actions items-center flex justify-between">
             <h2 class="font-bold text-xl text-success">$${tree.price}</h2>
-            <button class="btn btn-primary">Card</button>
+            <button class="btn btn-success" onclick="addToCard(${tree.id}, ${tree.name}, ${tree.price})">Card</button>
           </div>
         </div>
     `;
     treesContainer.appendChild(card);
   });
 }
+
+const openTreeModal = (treeId) => {
+  fetch(`https://openapi.programming-hero.com/api/plant/${treeId}`)
+    .then((res) => res.json())
+    .then((detail) => {
+      const plant = detail.plants;
+
+      modalTitle.textContent = plant.name;
+      modalInage.src = plant.image;
+      modalCategory.textContent = plant.category;
+      modalDescription.textContent = plant.description;
+      modalPrice.textContent = plant.price;
+
+      treeDetailsModal.showModal();
+    });
+};
 
 loadCategories();
 loadTrees();
