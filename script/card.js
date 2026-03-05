@@ -10,6 +10,8 @@ const modalInage = document.getElementById("modalInage");
 const modalCategory = document.getElementById("modalCategory");
 const modalDescription = document.getElementById("modalDescription");
 const modalPrice = document.getElementById("modalPrice");
+const totalItem = document.getElementById("totalItem");
+const card = [];
 
 function ShowLoading() {
   loadingSpiner.classList.remove("hidden");
@@ -109,7 +111,7 @@ function displayTrees(trees) {
           </div>
           <div class="card-actions items-center flex justify-between">
             <h2 class="font-bold text-xl text-success">$${tree.price}</h2>
-            <button class="btn btn-success" onclick="addToCard(${tree.id}, ${tree.name}, ${tree.price})">Card</button>
+            <button class="btn btn-success" onclick="addToCard(${tree.id}, '${tree.name}', '${tree.price}')">Card</button>
           </div>
         </div>
     `;
@@ -132,6 +134,41 @@ const openTreeModal = (treeId) => {
       treeDetailsModal.showModal();
     });
 };
+
+function addToCard(id, name, price) {
+  const existingItems = card.find((item) => item.id == id);
+  if (existingItems) {
+    existingItems.quantity++;
+  } else {
+    card.push({
+      id,
+      name,
+      price,
+      quantity: 1,
+    });
+  }
+
+  updateCard();
+}
+
+function updateCard() {
+  cardContainer.innerHTML = "";
+  card.forEach((item) => {
+    const cardItem = document.createElement("div");
+    cardItem.className = "card card-body bg-base-100 shadow-xl";
+    cardItem.innerHTML = `
+        <div class="flex justify-between items-center">
+           <div class="text-xl font-semibold">
+             <h2>${item.name}</h2>
+             <p>$${item.price} x ${item.quantity}</p>
+           </div>
+           <button class="btn btn-ghost">X</button>
+         </div>
+         <p class="font-semibold text-xl text-right">$${item.price * item.quantity}</p>
+    `;
+    cardContainer.appendChild(cardItem);
+  });
+}
 
 loadCategories();
 loadTrees();
