@@ -192,6 +192,7 @@
             <!-- all tree btn -->
             <div>
               <button
+                id="allTreesBtn"
                 class="btn btn-success w-full text-xl text-base-content mb-5"
               >
                 All Trees
@@ -207,11 +208,21 @@
           <div
             class="col-span-6 bg-base-100 card card-body shadow-xl card-border"
           >
-            <!-- all card -->
+            <!-- all trees card -->
             <div
               id="treesContainer"
-              class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5"
-            ></div>
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+            >
+              <!-- Dynamic added -->
+            </div>
+
+            <!-- Loading Spiner -->
+            <div
+              id="loadingSpiner"
+              class="h-[60vh] hidden justify-center items-center"
+            >
+              <span class="loading loading-dots loading-lg"></span>
+            </div>
           </div>
 
           <!-- card -->
