@@ -147,7 +147,6 @@ function addToCard(id, name, price) {
       quantity: 1,
     });
   }
-
   updateCard();
 }
 
