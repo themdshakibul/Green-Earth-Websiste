@@ -15,7 +15,7 @@
     <!-- title -->
     <title>Green Earth | Home</title>
   </head>
-  <body>
+  <body class="h-300">
     <header>
       <nav class="bg-success-content">
         <div class="navbar shadow-sm container mx-auto">
@@ -54,7 +54,7 @@
                   <input
                     type="checkbox"
                     class="theme-controller"
-                    value="synthwave"
+                    value="dark"
                   />
 
                   <!-- sun icon -->
@@ -136,5 +136,45 @@
         </div>
       </nav>
     </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="bg-success/20 text-success-content">
+        <div class="container mx-auto hero min-h-100 relative overflow-hidden">
+          <!-- Leaf -->
+          <img
+            src="./assets/hero-leaf1.png"
+            alt=""
+            class="absolute bottom-0 left-0 w-130 pointer-events-none"
+          />
+
+          <!-- Right -->
+          <img
+            src="./assets/hero-leaf2.png"
+            alt=""
+            class="absolute bottom-0 right-0 w-130 pointer-events-none hidden lg:block"
+          />
+
+          <!-- Hero Content -->
+          <div class="hero-content text-center relative z-10">
+            <div>
+              <h1 class="text-4xl md:text-5xl font-bold text-base-content">
+                Plant a Tree, Grow a Future
+              </h1>
+              <p class="py-6 text-base-content text-xl max-w-xl mx-auto">
+                Join our mission to plant 1 million trees and make the Earth
+                greener for future generations.
+              </p>
+
+              <button
+                class="btn rounded-full text-2xl px-7 py-6 btn-warning text-success-content"
+              >
+                Plant a Tree
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
