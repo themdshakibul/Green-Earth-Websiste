@@ -139,7 +139,9 @@
 
     <main>
       <!-- Hero -->
-      <section class="bg-success/20 text-success-content">
+      <section
+        class="bg-success/20 text-success-content mb-18 md:mb-20 lg:mb-25"
+      >
         <div class="container mx-auto hero min-h-100 relative overflow-hidden">
           <!-- Leaf -->
           <img
@@ -175,6 +177,54 @@
           </div>
         </div>
       </section>
+
+      <!-- Choose Your Trees -->
+      <section class="container mx-auto mb-18 md:mb-20 lg:mb-25">
+        <header class="mb-8 md:mb-10 lg:mb-14">
+          <h2 class="text-3xl font-semibold text-center">Choose Your Trees</h2>
+        </header>
+        <div class="grid grid-cols-12 gap-5">
+          <!-- Categories -->
+          <div
+            class="col-span-3 card card-body card-border bg-base-100 shadow-xl space-y-5"
+          >
+            <h2 class="text-xl font-medium">Categories</h2>
+            <!-- all tree btn -->
+            <div>
+              <button
+                class="btn btn-success w-full text-xl text-base-content mb-5"
+              >
+                All Trees
+              </button>
+              <!-- Categories All button -->
+              <div id="categoriesContainer" class="space-y-4">
+                <!-- Categories button handel javaScript -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Tree -->
+          <div
+            class="col-span-6 bg-base-100 card card-body shadow-xl card-border"
+          >
+            <!-- all card -->
+            <div
+              id="treesContainer"
+              class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5"
+            ></div>
+          </div>
+
+          <!-- card -->
+          <div
+            class="col-span-3 card card-body card-border bg-base-100 shadow-xl space-y-5"
+          >
+            <h2 class="text-xl font-medium">Your Cart</h2>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <!-- scritp file -->
+    <script src="./script/card.js"></script>
   </body>
 </html>
