@@ -246,7 +246,9 @@
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span class="badge badge-sm indicator-item" id="totalItem"
+                <span
+                  class="badge badge-sm bg-success text-base-content indicator-item"
+                  id="totalItem"
                   >0</span
                 >
               </div>
@@ -256,12 +258,21 @@
             <div class="space-y-5">
               <div id="cardContainer" class="space-y-4"></div>
 
+              <!-- empty card message -->
+              <div
+                id="emptyCardMessage"
+                class="text-center py-4 text-xl font-semibold card card-body shadow-xl"
+              >
+                <p>Your Card is Empty</p>
+                <p>Add trees to get started</p>
+              </div>
+
               <!-- total amount -->
               <div
                 class="py-5 bg-success/20 rounded-r-md p-5 flex items-center justify-between text-2xl font-semibold"
               >
                 <span>Total</span>
-                <span>$00</span>
+                <span id="totalPrice">$000</span>
               </div>
             </div>
           </div>

@@ -11,7 +11,9 @@ const modalCategory = document.getElementById("modalCategory");
 const modalDescription = document.getElementById("modalDescription");
 const modalPrice = document.getElementById("modalPrice");
 const totalItem = document.getElementById("totalItem");
-const card = [];
+const emptyCardMessage = document.getElementById("emptyCardMessage");
+const totalPrice = document.getElementById("totalPrice");
+let card = [];
 
 function ShowLoading() {
   loadingSpiner.classList.remove("hidden");
@@ -152,21 +154,42 @@ function addToCard(id, name, price) {
 
 function updateCard() {
   cardContainer.innerHTML = "";
+
+  if (card.length === 0) {
+    emptyCardMessage.classList.remove("hidden");
+    totalItem.innerText = 0;
+    totalPrice.innerText = "$0";
+    return;
+  }
+  emptyCardMessage.classList.add("hidden");
+
+  const totalQuantity = card.reduce((sum, item) => sum + item.quantity, 0);
+  let total = 0;
+
   card.forEach((item) => {
+    total += item.price * item.quantity;
     const cardItem = document.createElement("div");
     cardItem.className = "card card-body bg-base-100 shadow-xl";
     cardItem.innerHTML = `
-        <div class="flex justify-between items-center">
-           <div class="text-xl font-semibold">
-             <h2>${item.name}</h2>
-             <p>$${item.price} x ${item.quantity}</p>
-           </div>
-           <button class="btn btn-ghost">X</button>
-         </div>
-         <p class="font-semibold text-xl text-right">$${item.price * item.quantity}</p>
+    <div class="flex justify-between items-center">
+    <div class="text-xl font-semibold">
+    <h2>${item.name}</h2>
+    <p>$${item.price} x ${item.quantity}</p>
+    </div>
+    <button class="btn btn-ghost" onclick="removeFromCard(${item.id})">X</button>
+    </div>
+    <p class="font-semibold text-xl text-right">$${item.price * item.quantity}</p>
     `;
     cardContainer.appendChild(cardItem);
   });
+  totalPrice.innerText = `$${total}`;
+  totalItem.innerText = totalQuantity;
+}
+
+function removeFromCard(treeId) {
+  const updateCreateElement = card.filter((item) => item.id != treeId);
+  card = updateCreateElement;
+  updateCard();
 }
 
 loadCategories();
